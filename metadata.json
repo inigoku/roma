@@ -1,0 +1,6 @@
+{
+  "name": "Roma Antiga: Estudi 2n d'ESO",
+  "description": "App d'estudi interactiva de la Roma Antiga per a 2n d'ESO en català: orígens, monarquia, república, guerres púniques, Juli Cèsar, imperi i romanització.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
