@@ -7,6 +7,7 @@ import { FlashcardsView } from './components/FlashcardsView';
 import { TimelineView } from './components/TimelineView';
 import { RomanizationView } from './components/RomanizationView';
 import { ExamSimulatorView } from './components/ExamSimulatorView';
+import { AdvancedExamPdfView } from './components/AdvancedExamPdfView';
 import { GlossaryModal } from './components/GlossaryModal';
 import { RanksModal } from './components/RanksModal';
 
@@ -127,6 +128,19 @@ export default function App() {
           <ExamSimulatorView
             soundEnabled={soundEnabled}
             onEarnXp={handleEarnXp}
+            onOpenAdvancedExamPdf={() => {
+              setActiveTab('examen_pdf');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
+
+        {activeTab === 'examen_pdf' && (
+          <AdvancedExamPdfView
+            onBack={() => {
+              setActiveTab('examen');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           />
         )}
       </main>

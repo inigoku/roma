@@ -10,7 +10,9 @@ import {
   Check, 
   X, 
   HelpCircle,
-  Clock
+  Clock,
+  GraduationCap,
+  Sparkles
 } from 'lucide-react';
 import { playSuccessSound, playTriumphFanfare } from '../utils/audio';
 
@@ -74,12 +76,12 @@ const EXAM_TEST_QUESTIONS: TestExamQuestion[] = [
   {
     question: '3. Què significa "Alea iacta est" i quan es va pronunciar?',
     options: [
-      '"La sort està tirada", quan Cèsar va creuar el Rubicó el 49 aC.',
       '"Els ciutadans han parlat", durant l’aprovació de la Llei de les XII Taules.',
       '"Cartago ha de ser destruïda", en acabar la primera guerra púnica.',
+      '"La sort està tirada", quan Cèsar va creuar el Rubicó el 49 aC.',
       '"Pau a tot l’imperi", proclamat per Octavi August.'
     ],
-    correct: 0
+    correct: 2
   },
   {
     question: '4. Quin d’aquests elements NO forma part de la Romanització?',
@@ -113,12 +115,36 @@ const EXAM_TEST_QUESTIONS: TestExamQuestion[] = [
   }
 ];
 
+// Shuffle test questions options so answers A, B, C, D are randomized every attempt
+const shuffleExamQuestions = (questions: TestExamQuestion[]): TestExamQuestion[] => {
+  return questions.map((q) => {
+    const pairs = q.options.map((opt, idx) => ({
+      text: opt,
+      isCorrect: idx === q.correct
+    }));
+    for (let i = pairs.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+    }
+    const newCorrect = pairs.findIndex((p) => p.isCorrect);
+    return {
+      ...q,
+      options: pairs.map((p) => p.text),
+      correct: newCorrect
+    };
+  });
+};
+
 interface Props {
   soundEnabled: boolean;
   onEarnXp: (amount: number) => void;
+  onOpenAdvancedExamPdf?: () => void;
 }
 
-export const ExamSimulatorView: React.FC<Props> = ({ soundEnabled, onEarnXp }) => {
+export const ExamSimulatorView: React.FC<Props> = ({ soundEnabled, onEarnXp, onOpenAdvancedExamPdf }) => {
+  // Shuffled test questions
+  const [testQuestions, setTestQuestions] = useState<TestExamQuestion[]>(() => shuffleExamQuestions(EXAM_TEST_QUESTIONS));
+
   // Part 1: Test answers
   const [testAnswers, setTestAnswers] = useState<Record<number, number>>({});
 
@@ -157,12 +183,12 @@ export const ExamSimulatorView: React.FC<Props> = ({ soundEnabled, onEarnXp }) =
 
     // Part 1: 4 points max
     let testCorrect = 0;
-    EXAM_TEST_QUESTIONS.forEach((q, idx) => {
+    testQuestions.forEach((q, idx) => {
       if (testAnswers[idx] === q.correct) {
         testCorrect += 1;
       }
     });
-    points += (testCorrect / EXAM_TEST_QUESTIONS.length) * 4;
+    points += (testCorrect / testQuestions.length) * 4;
 
     // Part 2: 3 points max
     let matchCorrect = 0;
@@ -206,6 +232,7 @@ export const ExamSimulatorView: React.FC<Props> = ({ soundEnabled, onEarnXp }) =
   };
 
   const handleReset = () => {
+    setTestQuestions(shuffleExamQuestions(EXAM_TEST_QUESTIONS));
     setTestAnswers({});
     setMatches({});
     setChronoOrder(['c3', 'c1', 'c5', 'c2', 'c4']);
@@ -226,6 +253,38 @@ export const ExamSimulatorView: React.FC<Props> = ({ soundEnabled, onEarnXp }) =
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+      {/* High-Level Exam PDF Callout Banner */}
+      <div className="bg-gradient-to-r from-[#240a0c] via-[#421316] to-[#240a0c] text-white p-4 sm:p-5 rounded-2xl border-2 border-[#d4af37] shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="flex items-start gap-3.5">
+          <div className="p-2.5 bg-[#8b1e24] border border-amber-400/50 rounded-xl text-[#f7d984] shrink-0 shadow-inner">
+            <GraduationCap className="w-6 h-6" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <h3 className="font-cinzel text-sm sm:text-base font-bold text-white tracking-wide">
+                Examen Avançat en PDF (Nivell 10 / Excel·lència)
+              </h3>
+              <span className="text-[10px] font-mono bg-amber-500 text-neutral-950 font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
+                Els 9 Temes
+              </span>
+            </div>
+            <p className="text-xs text-amber-200/80 mt-1 max-w-xl">
+              Vols imprimir un examen complet en paper o desar-lo en PDF? Pots triar entre el <strong>Nivell 2n d’ESO</strong> (preguntes clares i adaptades) o el <strong>Nivell Ampliació</strong>, tots dos amb solucionari docent complet per als 9 temes.
+            </p>
+          </div>
+        </div>
+
+        {onOpenAdvancedExamPdf && (
+          <button
+            onClick={onOpenAdvancedExamPdf}
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-[#d4af37] to-[#f3cf65] hover:from-[#c29e2f] hover:to-[#dfbb52] text-neutral-950 font-bold text-xs sm:text-sm rounded-xl shadow-md hover:shadow-lg transition-all shrink-0 cursor-pointer self-stretch md:self-auto"
+          >
+            <Printer className="w-4 h-4" />
+            <span>Obrir / Descarregar PDF</span>
+          </button>
+        )}
+      </div>
+
       {/* Exam Header */}
       <div className="bg-[#240a0c] text-white p-6 rounded-2xl border-2 border-[#b88c32] shadow-md">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
@@ -241,14 +300,18 @@ export const ExamSimulatorView: React.FC<Props> = ({ soundEnabled, onEarnXp }) =
             </p>
           </div>
 
-          <button
-            onClick={() => window.print()}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-white/10 hover:bg-white/20 border border-amber-400/40 text-amber-100 rounded-lg transition-colors self-start sm:self-auto print:hidden"
-            title="Imprimir l'examen"
-          >
-            <Printer className="w-4 h-4 text-[#f0cb68]" />
-            <span>Imprimir Examen</span>
-          </button>
+          <div className="flex items-center gap-2 flex-wrap self-start sm:self-auto print:hidden">
+            {onOpenAdvancedExamPdf && (
+              <button
+                onClick={onOpenAdvancedExamPdf}
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold rounded-lg transition-colors shadow-sm cursor-pointer"
+                title="Obrir l'examen oficial complet en format PDF / Imprimible per a 2n d'ESO"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Examen Imprimible / PDF (Oficial)</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Results Banner if submitted */}
@@ -273,13 +336,27 @@ export const ExamSimulatorView: React.FC<Props> = ({ soundEnabled, onEarnXp }) =
               </button>
             </div>
 
-            <div className="max-w-[240px] mx-auto">
-              <AsterixIllustration
-                type={totalScore >= 5 ? "centurion_trophy" : "senate_debate"}
-                caption={totalScore >= 5 ? "Felicitats, legionari! Has aprovat l'examen de Roma!" : "Cal tornar a repassar el temari amb el Tribú de la Plebs!"}
-                className="aspect-3/2"
-              />
-            </div>
+            {totalScore >= 8 && onOpenAdvancedExamPdf && (
+              <div className="bg-amber-400/15 border border-amber-400/40 rounded-xl p-3 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                <div className="flex items-center gap-2.5">
+                  <Sparkles className="w-5 h-5 text-[#f0cb68] shrink-0" />
+                  <div>
+                    <p className="text-xs font-bold text-[#f0cb68]">
+                      {totalScore === 10 ? "PUNTUACIÓ PERFECTA (10/10)! Has dominat el nivell bàsic!" : "Puntuació d'excel·lència!"}
+                    </p>
+                    <p className="text-[11px] text-amber-100/80">
+                      Posa a prova la teva capacitat d'anàlisi amb l'Examen Avançat en PDF sobre tots els 9 temes.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  onClick={onOpenAdvancedExamPdf}
+                  className="px-3.5 py-1.5 bg-gradient-to-r from-[#d4af37] to-[#f3cf65] hover:from-[#c29e2f] hover:to-[#dfbb52] text-neutral-950 font-bold text-xs rounded-lg transition-colors whitespace-nowrap cursor-pointer shadow-xs"
+                >
+                  Obrir Examen Avançat PDF →
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -296,7 +373,7 @@ export const ExamSimulatorView: React.FC<Props> = ({ soundEnabled, onEarnXp }) =
           </div>
 
           <div className="space-y-6">
-            {EXAM_TEST_QUESTIONS.map((q, qIdx) => (
+            {testQuestions.map((q, qIdx) => (
               <div key={qIdx} className="space-y-2">
                 <p className="text-xs sm:text-sm font-bold text-[#2d221e]">{q.question}</p>
                 <div className="space-y-1.5 pl-2">

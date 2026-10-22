@@ -60,7 +60,11 @@ export const StudyModulesView: React.FC<Props> = ({ onStartQuizTopic, onOpenFlas
   };
 
   const handlePrint = () => {
-    window.print();
+    try {
+      window.print();
+    } catch {
+      // Iframe print fallback
+    }
   };
 
   // Quick filter for topics by text

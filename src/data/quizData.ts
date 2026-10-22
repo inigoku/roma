@@ -225,12 +225,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'La crisi del segle I aC',
     question: 'Què van proposar els germans Tiberi i Gai Grac per ajudar els ciutadans i camperols arruïnats?',
     options: [
-      'Una reforma agrària per repartir terres públiques als pobres',
       'Abolir completament el Senat',
       'Convidar els gals a governar Roma',
+      'Una reforma agrària per repartir terres públiques als pobres',
       'Construir un gran mur al voltant d’Itàlia'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'Els germans Grac van intentar limitar els grans latifundis dels patricis i donar feina i terra als ciutadans sense recursos.',
     difficulty: 'fàcil'
   },
@@ -239,8 +239,8 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicId: 5,
     topicTitle: 'La crisi del segle I aC',
     question: 'Qui va ser el gladiador que va liderar una gran rebel·lió de desenes de milers d’esclaus entre el 73 i el 71 aC?',
-    options: ['Espàrtac', 'Vercingetòrix', 'Cincinnat', 'Ciceró'],
-    correctIndex: 0,
+    options: ['Vercingetòrix', 'Cincinnat', 'Espàrtac', 'Ciceró'],
+    correctIndex: 2,
     explanation: 'Espàrtac va fugir de l’escola de gladiadors de Càpua i va posar en escac la República durant més de dos anys.',
     difficulty: 'fàcil'
   },
@@ -277,12 +277,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'Juli Cèsar',
     question: 'Quins tres personatges formaven el Primer Triumvirat l’any 60 aC?',
     options: [
-      'Cèsar, Pompeu i Cras',
       'August, Marc Antoni i Lèpid',
+      'Cèsar, Pompeu i Cras',
       'Ciceró, Cató i Brut',
       'Ròmul, Numa i Tarquini'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'Juli Cèsar (ambició política), Pompeu (prestigi militar) i Cras (l’home més ric de Roma) van acordar controlar el poder.',
     difficulty: 'fàcil'
   },
@@ -291,8 +291,8 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicId: 6,
     topicTitle: 'Juli Cèsar',
     question: 'A quina regió va aconseguir Cèsar la seva gran glòria militar conquerint-la entre el 58 i el 50 aC?',
-    options: ['La Gàl·lia (actual França)', 'Britània', 'Germània', 'Egipte'],
-    correctIndex: 0,
+    options: ['Britània', 'Germània', 'Egipte', 'La Gàl·lia (actual França)'],
+    correctIndex: 3,
     explanation: 'Cèsar va sotmetre totes les tribus gal·les i va derrotar Vercingetòrix al setge d’Alèsia el 52 aC.',
     difficulty: 'fàcil'
   },
@@ -302,12 +302,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'Juli Cèsar',
     question: 'Quina frase cèlebre va pronunciar Cèsar en creuar el riu Rubicó iniciant la guerra civil contra Pompeu?',
     options: [
-      'Alea iacta est ("La sort està tirada")',
       'Veni, vidi, vici ("Vaig venir, vaig veure, vaig vèncer")',
       'Delenda est Carthago ("Cartago ha de ser destruïda")',
+      'Alea iacta est ("La sort està tirada")',
       'Carpe diem ("Aprofita el dia")'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: '"Alea iacta est" va ser la frase en creuar el Rubicó l’any 49 aC, sabent que desafiava les lleis de Roma.',
     difficulty: 'fàcil'
   },
@@ -316,8 +316,13 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicId: 6,
     topicTitle: 'Juli Cèsar',
     question: 'En quina data tràgica va ser assassinat Juli Cèsar al Senat de Roma?',
-    options: ['15 de març del 44 aC (Idus de Març)', '21 d’abril del 753 aC', '1 de gener del 27 aC', '24 d’agost del 79 dC'],
-    correctIndex: 0,
+    options: [
+      '21 d’abril del 753 aC',
+      '15 de març del 44 aC (Idus de Març)',
+      '1 de gener del 27 aC',
+      '24 d’agost del 79 dC'
+    ],
+    correctIndex: 1,
     explanation: 'Els Idus de Març (15 de març del 44 aC), Cèsar va rebre 23 punyalades d’un grup de senadors republicans liderats per Brut i Cassi.',
     difficulty: 'fàcil'
   },
@@ -394,12 +399,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'L’Imperi Romà',
     question: 'Quines van ser les causes principals de la greu Crisi del segle III dC a l’Imperi Romà?',
     options: [
-      'Amenaces i invasions bàrbares, fallida econòmica i una forta inestabilitat militar amb emperadors assassinats',
       'La manca de pedres per construir monuments',
       'L’atac dels samurais des d’Àsia',
+      'Amenaces i invasions bàrbares, fallida econòmica i una forta inestabilitat militar amb emperadors assassinats',
       'La decisió voluntària dels romans d’abandonar les ciutats'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'Al segle III dC, les legions proclamaven i assassinaven emperadors contínuament, mentre els pobles germànics trencaven el limes i l’economia col·lapsava.',
     difficulty: 'mitjà'
   },
@@ -426,12 +431,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'L’Economia Romana i el Primer Cristianisme',
     question: 'Quins tres conreus essencials formaven la "trilogia mediterrània" en l’agricultura romana?',
     options: [
-      'Blat, oliva i vinya',
       'Patata, tomàquet i blat de moro',
       'Arròs, soja i te',
+      'Blat, oliva i vinya',
       'Civada, poma i sègol'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'La trilogia mediterrània estava composta pel blat (pa), l’olivera (oli d’oliva) i la vinya (vi), consumits diàriament per totes les classes socials.',
     difficulty: 'fàcil'
   },
@@ -441,12 +446,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'L’Economia Romana i el Primer Cristianisme',
     question: 'Quina eina agrícola arrossegada per bous i amb rella de ferro va permetre als romans llaurar més profundament?',
     options: [
-      'L’arada romana',
       'El tractor mecànic',
+      'L’arada romana',
       'La falç egípcia',
       'El trill de fusta'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'L’arada romana combinava fusta i ferro per obrir solcs profunds, afavorint el rendiment dels camps de conreu.',
     difficulty: 'fàcil'
   },
@@ -456,12 +461,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'L’Economia Romana i el Primer Cristianisme',
     question: 'Quines eren les tres formes principals d’explotació dels territoris conquerits per Roma?',
     options: [
-      'Esclaus (mà d’obra gratuïta), cobrament d’impostos i confiscació de béns i terres',
       'Donacions voluntàries, turisme i préstecs bancaris',
       'Treball exclusiu d’artesans lliures i sous públics',
-      'Regal de diners de Roma cap a les províncies'
+      'Regal de diners de Roma cap a les províncies',
+      'Esclaus (mà d’obra gratuïta), cobrament d’impostos i confiscació de béns i terres'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: 'Roma obtenia riquesa de les províncies mitjançant l’esclavitud dels presoners de guerra, el cobrament d’impostos anuals i la confiscació de terres (ager publicus).',
     difficulty: 'mitjà'
   },
@@ -471,12 +476,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'L’Economia Romana i el Primer Cristianisme',
     question: 'Per quin motiu les autoritats romanes van perseguir els primers cristians durant tres segles?',
     options: [
-      'Perquè es negaven a adorar l’emperador com a déu i a rendir culte als déus tradicionals pagans',
       'Perquè parlaven un idioma que els romans no entenien',
+      'Perquè es negaven a adorar l’emperador com a déu i a rendir culte als déus tradicionals pagans',
       'Perquè no volien menjar pa ni oli',
       'Perquè volien conquerir Roma amb armes'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'En ser monoteistes, els cristians només adoraven Déu i rebutjaven la divinització de l’emperador, cosa que Roma considerava traïció política a l’Estat.',
     difficulty: 'mitjà'
   },
@@ -486,12 +491,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'L’Economia Romana i el Primer Cristianisme',
     question: 'Quin emperador va autoritzar el cristianisme i va establir la llibertat religiosa amb l’Edicte de Milà (313 dC)?',
     options: [
-      'L’emperador Constantí el Gran',
       'Juli Cèsar',
       'Neró',
+      'L’emperador Constantí el Gran',
       'Calígula'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'L’any 313 dC, Constantí va promulgar l’Edicte de Milà, aturant les persecucions, autoritzant la religió cristiana i convertint-se ell mateix.',
     difficulty: 'fàcil'
   },
@@ -501,12 +506,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'L’Economia Romana i el Primer Cristianisme',
     question: 'Quin any i sota quin emperador el cristianisme va ser declarat RELIGIÓ OFICIAL de tot l’Imperi Romà?',
     options: [
-      'L’any 380 dC per l’emperador Teodosi (Edicte de Tessalònica)',
       'L’any 27 aC per Octavi August',
       'L’any 753 aC per Ròmul',
-      'L’any 218 aC per Escipió'
+      'L’any 218 aC per Escipió',
+      'L’any 380 dC per l’emperador Teodosi (Edicte de Tessalònica)'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: 'L’any 380 dC, Teodosi el Gran va prohibir els cultes pagans i va convertir el cristianisme en l’única religió oficial de tot l’Estat romà.',
     difficulty: 'mitjà'
   },
@@ -518,12 +523,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'La Crisi i la Fi de l’Imperi Romà d’Occident',
     question: 'Quina conseqüència econòmica immediata va tenir la fi de les grans conquestes de territoris a l’Imperi?',
     options: [
-      'Va haver-hi una manca d’esclaus, provocant un fort descens de la producció agrícola i minera',
       'Tots els ciutadans es van fer rics instantàniament',
+      'Va haver-hi una manca d’esclaus, provocant un fort descens de la producció agrícola i minera',
       'Es van tancar totes les calçades perquè ningú les utilitzava',
       'Els romans van decidir dedicar-se només a la pesca'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'En aturar-se les conquestes, no arribaven nous presoners de guerra. La manca d’esclaus va fer caure la producció agrícola i va provocar una greu crisi econòmica.',
     difficulty: 'mitjà'
   },
@@ -533,12 +538,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'La Crisi i la Fi de l’Imperi Romà d’Occident',
     question: 'En quin any i quin emperador va dividir l’Imperi Romà en dos blocs: Occident (Roma) i Orient (Bizanci)?',
     options: [
-      'L’any 395 dC per l’emperador Teodosi',
       'L’any 44 aC per Juli Cèsar',
       'L’any 218 aC per Anníbal',
+      'L’any 395 dC per l’emperador Teodosi',
       'L’any 106 dC per Trajà'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'L’any 395 dC, Teodosi va repartir l’Imperi entre els seus fills: Honori (Occident amb capital a Roma) i Arcadi (Orient amb capital a Constantinoble).',
     difficulty: 'fàcil'
   },
@@ -548,12 +553,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'La Crisi i la Fi de l’Imperi Romà d’Occident',
     question: 'Quins tres pobles germànics van envair la península Ibèrica (Hispània) l’any 409 dC?',
     options: [
-      'Vàndals, alans i sueus',
       'Vikings, normands i celtes',
       'Fenicis, grecs i cartaginesos',
-      'Huns, mongols i perses'
+      'Huns, mongols i perses',
+      'Vàndals, alans i sueus'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: 'L’any 409 dC, els vàndals, alans i sueus van creuar els Pirineus i es van repartir les províncies hispàniques davant la impotència romana.',
     difficulty: 'mitjà'
   },
@@ -563,12 +568,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'La Crisi i la Fi de l’Imperi Romà d’Occident',
     question: 'Quin cabdill visigot va liderar el cèlebre saqueig de la ciutat de Roma l’any 410 dC?',
     options: [
-      'Alaric',
       'Espàrtac',
+      'Alaric',
       'Vercingetòrix',
       'Anníbal'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'Alaric I i els visigots van assaltar i saquejar Roma durant tres dies l’any 410 dC, deixant en xoc tot el món mediterrani.',
     difficulty: 'fàcil'
   },
@@ -578,12 +583,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'La Crisi i la Fi de l’Imperi Romà d’Occident',
     question: 'Quin temible poble nòmada de genets de les estepes comandat per Àtila va envair Europa?',
     options: [
-      'Els huns',
       'Els samnites',
       'Els cartaginesos',
+      'Els huns',
       'Els etruscs'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'Els huns, liderats per Àtila ("el flagell de Déu"), van sembrar el terror a Europa i van empènyer els pobles germànics a penetrar a les províncies romanes.',
     difficulty: 'fàcil'
   },
@@ -593,12 +598,12 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     topicTitle: 'La Crisi i la Fi de l’Imperi Romà d’Occident',
     question: 'Què va succeir l’any 476 dC que es considera la FI DE L’EDAT ANTIGA i el començament de L’EDAT MITJANA?',
     options: [
-      'El bàrbar Odoacre va deposar l’últim emperador d’Occident, Ròmul Augústul, i es va coronar rei',
       'Juli Cèsar va ser assassinat al Senat',
       'Es va construir el Coliseu de Roma',
-      'Roma va conquerir la ciutat d’Atenes'
+      'Roma va conquerir la ciutat d’Atenes',
+      'El bàrbar Odoacre va deposar l’últim emperador d’Occident, Ròmul Augústul, i es va coronar rei'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: 'L’any 476 dC, Odoacre va fer fora del tron al jove Ròmul Augústul: és la caiguda definitiva de l’Imperi Romà d’Occident i l’inici de l’Edat Mitjana.',
     difficulty: 'fàcil'
   }

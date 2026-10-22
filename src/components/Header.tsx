@@ -1,8 +1,8 @@
 import React from 'react';
-import { Volume2, VolumeX, BookMarked, Award, Shield, Compass, BookOpen, Clock, FileCheck, Map } from 'lucide-react';
+import { Volume2, VolumeX, BookMarked, Award, Shield, Compass, BookOpen, Clock, FileCheck, Map, GraduationCap } from 'lucide-react';
 import { getRankForXp, getNextRank, RomanRank } from '../utils/ranks';
 
-export type TabType = 'temari' | 'mapa' | 'quiz' | 'flashcards' | 'timeline' | 'romanitzacio' | 'examen';
+export type TabType = 'temari' | 'mapa' | 'quiz' | 'flashcards' | 'timeline' | 'romanitzacio' | 'examen' | 'examen_pdf';
 
 interface HeaderProps {
   activeTab: TabType;
@@ -33,14 +33,15 @@ export const Header: React.FC<HeaderProps> = ({
     Math.max(0, Math.round(((xp - prevXpThreshold) / (nextXpThreshold - prevXpThreshold)) * 100))
   );
 
-  const navItems: { id: TabType; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
+  const navItems: { id: TabType; label: string; icon: React.ComponentType<{ className?: string }>; highlight?: boolean }[] = [
     { id: 'temari', label: 'Els 9 Temes', icon: BookOpen },
     { id: 'mapa', label: "Mapa d'Expansió", icon: Map },
     { id: 'quiz', label: 'Repte Quiz', icon: Shield },
     { id: 'flashcards', label: 'Flashcards', icon: BookMarked },
     { id: 'timeline', label: 'Línia del Temps', icon: Clock },
     { id: 'romanitzacio', label: 'Romanització', icon: Compass },
-    { id: 'examen', label: 'Simulacre d’Examen', icon: FileCheck },
+    { id: 'examen', label: 'Simulacre', icon: FileCheck },
+    { id: 'examen_pdf', label: 'Examen PDF Imprimible', icon: GraduationCap, highlight: true },
   ];
 
   return (
@@ -136,12 +137,19 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setActiveTab(item.id)}
                   className={`flex items-center gap-2 py-2 px-3 text-xs sm:text-sm font-medium rounded-md whitespace-nowrap transition-colors ${
                     isActive
-                      ? 'bg-[#8b1e24] text-white shadow-xs font-semibold'
+                      ? 'bg-[#8b1e24] text-white shadow-xs font-semibold ring-1 ring-amber-400/50'
+                      : item.highlight
+                      ? 'bg-amber-400/10 text-amber-200 hover:bg-amber-400/20 border border-amber-500/40 font-semibold'
                       : 'text-amber-100/70 hover:text-amber-100 hover:bg-white/5'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-[#f5d77f]' : 'text-amber-300/70'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-[#f5d77f]' : item.highlight ? 'text-amber-300' : 'text-amber-300/70'}`} />
                   <span>{item.label}</span>
+                  {item.highlight && (
+                    <span className="hidden lg:inline text-[9px] bg-amber-500 text-neutral-950 font-bold px-1.5 py-0.2 rounded-full font-mono uppercase">
+                      PDF
+                    </span>
+                  )}
                 </button>
               );
             })}

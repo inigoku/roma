@@ -29,15 +29,33 @@ export const QuizGameView: React.FC<Props> = ({ initialTopicId, soundEnabled, on
     startNewQuiz(selectedFilter);
   }, [selectedFilter]);
 
+  // Helper to randomize options for each question so correct answers are evenly distributed across A, B, C, D
+  const shuffleQuestionOptions = (q: QuizQuestion): QuizQuestion => {
+    const pairs = q.options.map((opt, idx) => ({
+      text: opt,
+      isCorrect: idx === q.correctIndex
+    }));
+    for (let i = pairs.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+    }
+    const newCorrectIndex = pairs.findIndex((p) => p.isCorrect);
+    return {
+      ...q,
+      options: pairs.map((p) => p.text),
+      correctIndex: newCorrectIndex
+    };
+  };
+
   const startNewQuiz = (filter: number | 'all') => {
     let pool = QUIZ_QUESTIONS;
     if (filter !== 'all') {
       pool = QUIZ_QUESTIONS.filter((q) => q.topicId === filter);
     }
-    // Shuffle questions
+    // Shuffle questions order
     const shuffled = [...pool].sort(() => Math.random() - 0.5);
     // If 'all', take 10 random questions for a dynamic exam feel
-    const selected = filter === 'all' ? shuffled.slice(0, 10) : shuffled;
+    const selected = (filter === 'all' ? shuffled.slice(0, 10) : shuffled).map(shuffleQuestionOptions);
 
     setActiveQuestions(selected);
     setCurrentIndex(0);
